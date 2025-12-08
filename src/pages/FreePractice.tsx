@@ -13,7 +13,7 @@ export default function FreePracticePage() {
       </header>
 
       <section id="fpSummary" className="mt-6 mb-6">
-        <h2 className="text-2xl text-gray-100 font-bold">Objectives of Free Practice</h2>
+        <h2 className="text-3xl text-gray-100 font-bold">Objectives of Free Practice</h2>
         <div className="mt-2">
           <p className="text-gray-300">
             Free Practice sessions are a fundamental component of every Formula 1 Grand Prix
