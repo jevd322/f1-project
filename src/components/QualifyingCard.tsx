@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 
-export function CardDemo() {
+export function CardQualiOne() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
