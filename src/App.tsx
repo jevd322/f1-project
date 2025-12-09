@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Basics from './pages/Basics';
 import About from './pages/About';
+import Championship from './pages/Championship';
+import './test-json';
 
 function HomeContent() {
   return (
@@ -45,6 +47,7 @@ export default function App() {
   // treat any route that starts with /basics as the Basics container
   if (route === '/basics' || route.startsWith('/basics/')) content = <Basics />;
   if (route === '/about') content = <About />;
+  if (route === '/championship') content = <Championship />;
 
   return (
     <div>
