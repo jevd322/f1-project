@@ -5,6 +5,7 @@ import { CardQualiOne as QualifyingCard } from '../components/QualifyingCard';
 import { CardQualiTwo as QualiTwo } from '../components/QualifyingCard';
 import { CardQualiThree as QualiThree } from '../components/QualifyingCard';
 import { QualiGFX as QualiGFX } from '../components/QualiGraphics';
+import { QualiGFXWithDetails as GFXDetails } from '../components/QualiGraphics';
 
 export default function QualifyingPage() {
   return (
@@ -119,7 +120,7 @@ export default function QualifyingPage() {
             This section covers the graphics used during the Qualifying session
           </p>
         </div>
-        <QualiGFX />
+        <GFXDetails />
       </section>
 
       <section className="my-6"></section>
