@@ -1,0 +1,222 @@
+[
+    {
+        "year":  2023,
+        "session_key":  7953,
+        "session_name":  "Race",
+        "country_name":  "Bahrain",
+        "circuit_short_name":  "Sakhir",
+        "location":  "Sakhir",
+        "date_start":  "2023-03-05T15:00:00+00:00",
+        "date_end":  "2023-03-05T17:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  7779,
+        "session_name":  "Race",
+        "country_name":  "Saudi Arabia",
+        "circuit_short_name":  "Jeddah",
+        "location":  "Jeddah",
+        "date_start":  "2023-03-19T17:00:00+00:00",
+        "date_end":  "2023-03-19T19:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  7787,
+        "session_name":  "Race",
+        "country_name":  "Australia",
+        "circuit_short_name":  "Melbourne",
+        "location":  "Melbourne",
+        "date_start":  "2023-04-02T05:00:00+00:00",
+        "date_end":  "2023-04-02T07:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9070,
+        "session_name":  "Race",
+        "country_name":  "Azerbaijan",
+        "circuit_short_name":  "Baku",
+        "location":  "Baku",
+        "date_start":  "2023-04-30T11:00:00+00:00",
+        "date_end":  "2023-04-30T13:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9078,
+        "session_name":  "Race",
+        "country_name":  "United States",
+        "circuit_short_name":  "Miami",
+        "location":  "Miami",
+        "date_start":  "2023-05-07T19:30:00+00:00",
+        "date_end":  "2023-05-07T21:30:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9094,
+        "session_name":  "Race",
+        "country_name":  "Monaco",
+        "circuit_short_name":  "Monte Carlo",
+        "location":  "Monaco",
+        "date_start":  "2023-05-28T13:00:00+00:00",
+        "date_end":  "2023-05-28T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9102,
+        "session_name":  "Race",
+        "country_name":  "Spain",
+        "circuit_short_name":  "Catalunya",
+        "location":  "Barcelona",
+        "date_start":  "2023-06-04T13:00:00+00:00",
+        "date_end":  "2023-06-04T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9110,
+        "session_name":  "Race",
+        "country_name":  "Canada",
+        "circuit_short_name":  "Montreal",
+        "location":  "Montr??al",
+        "date_start":  "2023-06-18T18:00:00+00:00",
+        "date_end":  "2023-06-18T20:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9118,
+        "session_name":  "Race",
+        "country_name":  "Austria",
+        "circuit_short_name":  "Spielberg",
+        "location":  "Spielberg",
+        "date_start":  "2023-07-02T13:00:00+00:00",
+        "date_end":  "2023-07-02T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9126,
+        "session_name":  "Race",
+        "country_name":  "Great Britain",
+        "circuit_short_name":  "Silverstone",
+        "location":  "Silverstone",
+        "date_start":  "2023-07-09T14:00:00+00:00",
+        "date_end":  "2023-07-09T16:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9133,
+        "session_name":  "Race",
+        "country_name":  "Hungary",
+        "circuit_short_name":  "Hungaroring",
+        "location":  "Budapest",
+        "date_start":  "2023-07-23T13:00:00+00:00",
+        "date_end":  "2023-07-23T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9141,
+        "session_name":  "Race",
+        "country_name":  "Belgium",
+        "circuit_short_name":  "Spa-Francorchamps",
+        "location":  "Spa-Francorchamps",
+        "date_start":  "2023-07-30T13:00:00+00:00",
+        "date_end":  "2023-07-30T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9149,
+        "session_name":  "Race",
+        "country_name":  "Netherlands",
+        "circuit_short_name":  "Zandvoort",
+        "location":  "Zandvoort",
+        "date_start":  "2023-08-27T13:00:00+00:00",
+        "date_end":  "2023-08-27T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9157,
+        "session_name":  "Race",
+        "country_name":  "Italy",
+        "circuit_short_name":  "Monza",
+        "location":  "Monza",
+        "date_start":  "2023-09-03T13:00:00+00:00",
+        "date_end":  "2023-09-03T15:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9165,
+        "session_name":  "Race",
+        "country_name":  "Singapore",
+        "circuit_short_name":  "Singapore",
+        "location":  "Marina Bay",
+        "date_start":  "2023-09-17T12:00:00+00:00",
+        "date_end":  "2023-09-17T14:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9173,
+        "session_name":  "Race",
+        "country_name":  "Japan",
+        "circuit_short_name":  "Suzuka",
+        "location":  "Suzuka",
+        "date_start":  "2023-09-24T05:00:00+00:00",
+        "date_end":  "2023-09-24T07:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9221,
+        "session_name":  "Race",
+        "country_name":  "Qatar",
+        "circuit_short_name":  "Lusail",
+        "location":  "Lusail",
+        "date_start":  "2023-10-08T17:00:00+00:00",
+        "date_end":  "2023-10-08T19:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9213,
+        "session_name":  "Race",
+        "country_name":  "United States",
+        "circuit_short_name":  "Austin",
+        "location":  "Austin",
+        "date_start":  "2023-10-22T19:00:00+00:00",
+        "date_end":  "2023-10-22T21:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9181,
+        "session_name":  "Race",
+        "country_name":  "Mexico",
+        "circuit_short_name":  "Mexico City",
+        "location":  "Mexico City",
+        "date_start":  "2023-10-29T20:00:00+00:00",
+        "date_end":  "2023-10-29T22:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9205,
+        "session_name":  "Race",
+        "country_name":  "Brazil",
+        "circuit_short_name":  "Interlagos",
+        "location":  "S??o Paulo",
+        "date_start":  "2023-11-05T17:00:00+00:00",
+        "date_end":  "2023-11-05T19:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9189,
+        "session_name":  "Race",
+        "country_name":  "United States",
+        "circuit_short_name":  "Las Vegas",
+        "location":  "Las Vegas",
+        "date_start":  "2023-11-19T06:00:00+00:00",
+        "date_end":  "2023-11-19T08:00:00+00:00"
+    },
+    {
+        "year":  2023,
+        "session_key":  9197,
+        "session_name":  "Race",
+        "country_name":  "United Arab Emirates",
+        "circuit_short_name":  "Yas Marina Circuit",
+        "location":  "Yas Island",
+        "date_start":  "2023-11-26T13:00:00+00:00",
+        "date_end":  "2023-11-26T15:00:00+00:00"
+    }
+]

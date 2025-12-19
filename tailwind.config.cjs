@@ -11,6 +11,28 @@ module.exports = {
   				'50': '#1B1C1D',
   				'100': '#232426'
   			},
+  			f1: {
+  				'red-bull': '#3671C6',
+  				'red-bull-dark': '#1E3A70',
+  				'ferrari': '#E8002D',
+  				'ferrari-dark': '#A6002A',
+  				'mercedes': '#27F4D2',
+  				'mercedes-dark': '#00D2BE',
+  				'mclaren': '#FF8000',
+  				'mclaren-dark': '#FF6000',
+  				'aston-martin': '#229971',
+  				'aston-martin-dark': '#00594F',
+  				'alpine': '#FF87BC',
+  				'alpine-dark': '#FD4BC1',
+  				'williams': '#64C4FF',
+  				'williams-dark': '#00A0DD',
+  				'rb': '#6692FF',
+  				'rb-dark': '#4664F1',
+  				'kick-sauber': '#00E701',
+  				'kick-sauber-dark': '#00C203',
+  				'haas': '#B6BABD',
+  				'haas-dark': '#787B7E'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

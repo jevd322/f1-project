@@ -15,7 +15,7 @@ export default function Championship() {
 
       <div className='grid grid-cols-3 gap-8'>
       <section className="mb-6 col-span-2 space-y-4">
-        <h2 className="text-3xl text-gray-100 font-bold">Three-Phase Elimination Format</h2>
+        <h2 className="text-3xl text-gray-100 font-bold">Points System</h2>
         <div>
           <p className="text-gray-400">
             The Qualifying session is usually held on Saturday afternoon right after the Free
