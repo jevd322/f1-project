@@ -1,9 +1,10 @@
 import SideNav from '../components/sideNav';
 import SectionNavButtons from '../components/SectionNavButtons';
 import { Separator } from '@radix-ui/react-separator';
-import { CardDemo as QualifyingCard } from '../components/QualifyingCard';
+import { CardQualiOne as QualifyingCard } from '../components/QualifyingCard';
 import { CardQualiTwo as QualiTwo } from '../components/QualifyingCard';
 import { CardQualiThree as QualiThree } from '../components/QualifyingCard';
+import { QualiGFX as QualiGFX } from '../components/QualiGraphics';
 
 export default function QualifyingPage() {
   return (
@@ -30,7 +31,7 @@ export default function QualifyingPage() {
           Qualifying is divided into three segments: Q1, Q2, and Q3. Each phase increases the level
           of competition, gradually narrowing the field.
         </p>
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row">
           <QualifyingCard />
           <QualiTwo />
           <QualiThree />
@@ -38,33 +39,39 @@ export default function QualifyingPage() {
       </section>
 
       <section className="my-6">
-        <h2 className="text-3xl text-gray-100 font-bold">Qualifying Graphics</h2>
-        <div>
-          <p className="text-gray-400">
-            This section covers the graphics used during the Qualifying session
-          </p>
-        </div>
-      </section>
-
-      <section className="my-6">
-        <div>
-          <h2 className="text-3xl text-gray-100 font-bold">Grid Position</h2>
+        <div className="mb-4">
           <p className="text-gray-400">
             Note: The Pole Position (P1) is usually placed on the racing line, which is the part of
             the track where cars lay down the most rubber.
           </p>
         </div>
+        <div className="px-8">
+          <div className="grid grid-cols-12 grid-rows-1 mb-4 w-full ">
+            <div className="col-span-3 row-start-1">
+              <div className="h-8 flex-1 bg-yellow-300 rounded shadow flex items-center justify-end pr-4 text-gray-900 font-black">
+                <p>Q1 | P20-16</p>
+              </div>
+            </div>
+            <div className="col-start-4 col-span-3 ">
+              <div className="w-full h-8 flex-1 bg-green-300 rounded shadow flex items-center justify-end pr-4 text-gray-900 font-black">
+                <p>Q2 | P15-11</p>
+              </div>
+            </div>
+            <div className="col-span-6 ">
+              <div className="h-8 flex-1 bg-purple-300 rounded shadow flex items-center justify-end pr-4 text-gray-900 font-black">
+                <p>Q3 | Top 10</p>
+              </div>
+            </div>
+          </div>
 
-        <Separator className="my-4 h-px bg-gray-700 border-0" />
-        <div className="pl-8 pr-8">
-          <div className="flex flex-row gap-2 justify-between mt-4 mb-2 pr-8">
+          <div className="flex flex-row gap-2 justify-between mt-4 mb-2 pr-10">
             {[...Array(10)].map((_, i) => (
               <div key={i} className="flex flex-row items-center">
                 <span className="text-gray-300 text-lg font-bold w-8 text-right">{`P${
                   20 - 2 * i
                 }`}</span>
                 <svg
-                  width="32"
+                  width="16"
                   height="40"
                   viewBox="0 0 24 48"
                   fill="none"
@@ -86,7 +93,7 @@ export default function QualifyingPage() {
                   19 - 2 * i
                 }`}</span>
                 <svg
-                  width="32"
+                  width="16"
                   height="40"
                   viewBox="0 0 24 48"
                   fill="none"
@@ -104,6 +111,18 @@ export default function QualifyingPage() {
         </div>
         <Separator className="my-4 h-px bg-gray-700 border-0" />
       </section>
+
+      <section className="my-6">
+        <h2 className="text-3xl text-gray-100 font-bold">Qualifying Graphics</h2>
+        <div>
+          <p className="text-gray-400">
+            This section covers the graphics used during the Qualifying session
+          </p>
+        </div>
+        <QualiGFX />
+      </section>
+
+      <section className="my-6"></section>
 
       <SectionNavButtons />
     </div>
