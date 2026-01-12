@@ -221,31 +221,35 @@ export default function SeasonDetail({ year }: SeasonDetailProps) {
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
-              {teamDrivers.map((team) => (
+              {teamDrivers.map((team, index) => (
                 <tr 
                   key={team.constructorId}
-                  className="hover:bg-muted/50 transition-colors"
+                  className={`hover:bg-muted/50 transition-colors ${index % 2 === 0 ? 'bg-slate-800/70' : 'bg-slate-900/50'}`}
                 >
                   <td className="p-2 px-6">
-                    <div className="flex items-center gap-3">
+                    <a
+                      href={`#/teams/${team.constructorId}`}
+                      className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                    >
                       <div className={`w-1 h-6 rounded ${getTeamColor(team.constructorId)}`}></div>
-                      <span className="text-lg font-bold text-foreground uppercase">
+                      <span className="text-lg font-bold text-foreground uppercase hover:text-[#FFD37B] transition-colors">
                         {formatName(team.constructorId)}
                       </span>
-                    </div>
+                    </a>
                   </td>
                   <td className="p-2 px-6">
                     <div className="flex flex-col gap-2">
                       {team.drivers.map((driver) => (
-                        <div 
+                        <a 
                           key={driver}
-                          className="flex items-center gap-2 text-muted-foreground hover:text-[#FFD37B] transition-colors"
+                          href={`#/drivers/${driver}`}
+                          className="flex items-center gap-2 text-muted-foreground hover:text-[#FFD37B] transition-colors cursor-pointer"
                         >
                           <User className="w-3 h-3" />
                           <span className="text-sm font-medium">
                             {formatName(driver)}
                           </span>
-                        </div>
+                        </a>
                       ))}
                     </div>
                   </td>
@@ -316,9 +320,10 @@ export default function SeasonDetail({ year }: SeasonDetailProps) {
                   <div className="bg-card border border-border rounded-lg overflow-hidden max-h-[570px] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-slate-600">
                     <div className="divide-y divide-border">
                       {driverStandings.map((driver) => (
-                        <div 
+                        <a
                           key={driver.driverId}
-                          className="p-2 px-4 hover:bg-slate-900 transition-colors"
+                          href={`#/drivers/${driver.driverId}`}
+                          className="block p-2 px-4 hover:bg-slate-900 transition-colors cursor-pointer"
                         >
                           <div className="flex items-center gap-4">
                             <span className={`text-xl font-bold w-8 ${getPositionColor(driver.positionNumber)}`}>
@@ -344,7 +349,7 @@ export default function SeasonDetail({ year }: SeasonDetailProps) {
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -360,9 +365,10 @@ export default function SeasonDetail({ year }: SeasonDetailProps) {
                   <div className="bg-card border border-border rounded-lg overflow-hidden">
                     <div className="divide-y divide-border">
                       {constructorStandings.map((constructor) => (
-                        <div 
+                        <a
                           key={constructor.constructorId}
-                          className="p-2 px-4 hover:bg-slate-900 transition-colors"
+                          href={`#/teams/${constructor.constructorId}`}
+                          className="block p-2 px-4 hover:bg-slate-900 transition-colors cursor-pointer"
                         >
                           <div className="flex items-center gap-4">
                             <span className={`text-2xl font-bold w-8 ${getPositionColor(constructor.positionNumber)}`}>
@@ -386,7 +392,7 @@ export default function SeasonDetail({ year }: SeasonDetailProps) {
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       ))}
                     </div>
                   </div>
