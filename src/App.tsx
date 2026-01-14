@@ -7,6 +7,7 @@ import Championship from './pages/Championship';
 import SeasonsOverview from './pages/seasons/SeasonsOverview';
 import SeasonDetail from './pages/seasons/SeasonDetail';
 import DriverDetail from './pages/DriverDetail';
+import TeamDetail from './pages/TeamDetail';
 import MyProgress from './pages/MyProgress';
 import './test-json';
 
@@ -67,6 +68,11 @@ export default function App() {
   if (route.match(/^\/drivers\/[\w-]+$/)) {
     const driverId = route.split('/')[2];
     content = <DriverDetail driverId={driverId} />;
+  }
+  // Dynamic team detail route: /teams/team-id
+  if (route.match(/^\/teams\/[\w-]+$/)) {
+    const teamId = route.split('/')[2];
+    content = <TeamDetail teamId={teamId} />;
   }
   if (route === '/myprogress') content = <MyProgress />;
 

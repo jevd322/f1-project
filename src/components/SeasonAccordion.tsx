@@ -7,9 +7,12 @@ interface SeasonAccordionProps {
   year: number;
   races: number;
   driverChampion: string;
+  driverChampionId?: string;
   driverPoints: number;
   driverTeam: string;
+  driverTeamId?: string;
   constructorChampion: string;
+  constructorChampionId?: string;
   constructorPoints: number;
   isOpen: boolean;
   onToggle: () => void;
@@ -34,20 +37,20 @@ interface TeamDrivers {
 }
 
 const teamColors: Record<string, string> = {
-  'red-bull': 'bg-f1-red-bull',
-  'ferrari': 'bg-f1-ferrari',
-  'mercedes': 'bg-f1-mercedes',
-  'mclaren': 'bg-f1-mclaren',
-  'aston-martin': 'bg-f1-aston-martin',
-  'alpine': 'bg-f1-alpine',
-  'williams': 'bg-f1-williams',
-  'rb': 'bg-f1-rb',
-  'kick-sauber': 'bg-f1-kick-sauber',
-  'haas': 'bg-f1-haas',
-  'brawn': 'bg-gradient-to-b from-lime-400 to-lime-600',
-  'renault': 'bg-gradient-to-b from-yellow-400 to-yellow-600',
-  'lotus': 'bg-gradient-to-b from-black to-yellow-500',
-  'default': 'bg-gradient-to-b from-[#FFD37B] to-[#FFC857]'
+  'red-bull': 'border-l-f1-red-bull',
+  'ferrari': 'border-l-f1-ferrari',
+  'mercedes': 'border-l-f1-mercedes',
+  'mclaren': 'border-l-f1-mclaren',
+  'aston-martin': 'border-l-f1-aston-martin',
+  'alpine': 'border-l-f1-alpine',
+  'williams': 'border-l-f1-williams',
+  'rb': 'border-l-f1-rb',
+  'kick-sauber': 'border-l-f1-kick-sauber',
+  'haas': 'border-l-f1-haas',
+  'brawn': 'border-l-4 border-l-lime-500',
+  'renault': 'border-l-4 border-l-yellow-500',
+  'lotus': 'border-l-4 border-l-yellow-500',
+  'default': 'border-l-4 border-l-[#FFD37B]'
 };
 
 const getTeamColor = (teamName: string): string => {
@@ -59,9 +62,12 @@ export function SeasonAccordion({
   year,
   races,
   driverChampion,
+  driverChampionId,
   driverPoints,
   driverTeam,
+  driverTeamId,
   constructorChampion,
+  constructorChampionId,
   constructorPoints,
   isOpen,
   onToggle,
@@ -153,21 +159,20 @@ export function SeasonAccordion({
               <h3 className="text-sm font-bold text-[#FFD37B] uppercase tracking-wider mb-3">
                 Teams & Drivers ({teamDrivers.length} teams)
               </h3>
-              <div className="grid md:grid-rows-2 md:grid-cols-5 space-y-3">
+              <div className="grid lg:grid-rows-2 lg:grid-cols-5 md:grid-rows-3 md:grid-cols-3 space-y-4 lg:space-y-0 md:space-y-0 gap-4">
                 {teamDrivers.map((team) => (
-                  <div key={team.constructorId} className="mt-2">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-1 h-6 rounded ${getTeamColor(team.constructorId)}`}></div>
-                      <div className="text-2xl uppercase font-black text-[#FFC857]">
+                  <div key={team.constructorId} className={`p-4 bg-gray-800 ${getTeamColor(team.constructorId)} border-l-4 rounded-r-md`}>
+                    <a href={`#/teams/${team.constructorId}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                      <div className="text-xl uppercase font-black text-[#FFC857] hover:text-[#FFD37B] transition-colors">
                         {formatName(team.constructorId)}
                       </div>
-                    </div>
+                    </a>
                     <div className="pl-4 space-y-0.5">
                       {team.drivers.map((driver) => (
                         <a 
                           key={driver} 
                           href={`#/drivers/${driver}`}
-                          className="text-md text-foreground hover:text-[#FFD37B] transition-colors block"
+                          className="text-md text-foreground hover:text-[#FFD37B] hover:underline transition-colors block"
                         >
                           {formatName(driver)}
                         </a>

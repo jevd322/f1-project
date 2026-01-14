@@ -166,9 +166,12 @@ export default function Seasons() {
                   year={season.year}
                   races={season.races}
                   driverChampion={spoilerFree ? '█████ ████████' : formatDriverName(season.champion)}
+                  driverChampionId={season.champion}
                   driverPoints={spoilerFree ? 0 : season.championPoints}
                   driverTeam={spoilerFree ? '████████' : formatConstructorName(season.driverTeam)}
+                  driverTeamId={season.driverTeam}
                   constructorChampion={spoilerFree ? '█████ ████████' : formatConstructorName(season.constructorChampion)}
+                  constructorChampionId={season.constructorChampion}
                   constructorPoints={spoilerFree ? 0 : season.constructorPoints}
                   isOpen={false}
                   onToggle={() => {}}
