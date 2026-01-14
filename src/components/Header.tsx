@@ -29,6 +29,12 @@ export default function Header() {
             <a href="#/basics" className={linkClass('/basics')}>
               Basics
             </a>
+            <a href="#/seasons" className={linkClass('/seasons')}>
+              Seasons
+            </a>
+            <a href="#/myprogress" className={linkClass('/myprogress')}>
+              My Progress
+            </a>
           </nav>
         </div>
 

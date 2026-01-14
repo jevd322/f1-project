@@ -7,13 +7,13 @@ export default function FreePracticePage() {
     <div>
       <header className="mb-12">
         <h2 className="text-m font-black text-gray-400">Race Weekend</h2>
-        <h1 className="mt-1 text-5xl uppercase font-black text-transparent bg-gradient-to-r from-[#FFD37B] to-[#FFC857] bg-clip-text">
+        <h1 className="mt-1 text-3xl uppercase font-black text-transparent bg-gradient-to-r from-[#FFD37B] to-[#FFC857] bg-clip-text">
           Free Practice
         </h1>
       </header>
 
       <section id="fpSummary" className="mt-6 mb-6">
-        <h2 className="text-3xl text-gray-100 font-bold">Objectives of Free Practice</h2>
+        <h2 className="text-2xl text-gray-100 font-bold">Objectives of Free Practice</h2>
         <div className="mt-2">
           <p className="text-gray-300">
             Free Practice sessions are a fundamental component of every Formula 1 Grand Prix

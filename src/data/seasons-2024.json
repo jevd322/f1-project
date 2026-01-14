@@ -1,0 +1,242 @@
+[
+    {
+        "year":  2024,
+        "session_key":  9472,
+        "session_name":  "Race",
+        "country_name":  "Bahrain",
+        "circuit_short_name":  "Sakhir",
+        "location":  "Sakhir",
+        "date_start":  "2024-03-02T15:00:00+00:00",
+        "date_end":  "2024-03-02T17:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9480,
+        "session_name":  "Race",
+        "country_name":  "Saudi Arabia",
+        "circuit_short_name":  "Jeddah",
+        "location":  "Jeddah",
+        "date_start":  "2024-03-09T17:00:00+00:00",
+        "date_end":  "2024-03-09T19:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9488,
+        "session_name":  "Race",
+        "country_name":  "Australia",
+        "circuit_short_name":  "Melbourne",
+        "location":  "Melbourne",
+        "date_start":  "2024-03-24T04:00:00+00:00",
+        "date_end":  "2024-03-24T06:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9496,
+        "session_name":  "Race",
+        "country_name":  "Japan",
+        "circuit_short_name":  "Suzuka",
+        "location":  "Suzuka",
+        "date_start":  "2024-04-07T05:00:00+00:00",
+        "date_end":  "2024-04-07T07:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9673,
+        "session_name":  "Race",
+        "country_name":  "China",
+        "circuit_short_name":  "Shanghai",
+        "location":  "Shanghai",
+        "date_start":  "2024-04-21T07:00:00+00:00",
+        "date_end":  "2024-04-21T09:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9507,
+        "session_name":  "Race",
+        "country_name":  "United States",
+        "circuit_short_name":  "Miami",
+        "location":  "Miami",
+        "date_start":  "2024-05-05T20:00:00+00:00",
+        "date_end":  "2024-05-05T22:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9515,
+        "session_name":  "Race",
+        "country_name":  "Italy",
+        "circuit_short_name":  "Imola",
+        "location":  "Imola",
+        "date_start":  "2024-05-19T13:00:00+00:00",
+        "date_end":  "2024-05-19T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9523,
+        "session_name":  "Race",
+        "country_name":  "Monaco",
+        "circuit_short_name":  "Monte Carlo",
+        "location":  "Monaco",
+        "date_start":  "2024-05-26T13:00:00+00:00",
+        "date_end":  "2024-05-26T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9531,
+        "session_name":  "Race",
+        "country_name":  "Canada",
+        "circuit_short_name":  "Montreal",
+        "location":  "Montr??al",
+        "date_start":  "2024-06-09T18:00:00+00:00",
+        "date_end":  "2024-06-09T20:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9539,
+        "session_name":  "Race",
+        "country_name":  "Spain",
+        "circuit_short_name":  "Catalunya",
+        "location":  "Barcelona",
+        "date_start":  "2024-06-23T13:00:00+00:00",
+        "date_end":  "2024-06-23T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9550,
+        "session_name":  "Race",
+        "country_name":  "Austria",
+        "circuit_short_name":  "Spielberg",
+        "location":  "Spielberg",
+        "date_start":  "2024-06-30T13:00:00+00:00",
+        "date_end":  "2024-06-30T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9558,
+        "session_name":  "Race",
+        "country_name":  "Great Britain",
+        "circuit_short_name":  "Silverstone",
+        "location":  "Silverstone",
+        "date_start":  "2024-07-07T14:00:00+00:00",
+        "date_end":  "2024-07-07T16:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9566,
+        "session_name":  "Race",
+        "country_name":  "Hungary",
+        "circuit_short_name":  "Hungaroring",
+        "location":  "Budapest",
+        "date_start":  "2024-07-21T13:00:00+00:00",
+        "date_end":  "2024-07-21T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9574,
+        "session_name":  "Race",
+        "country_name":  "Belgium",
+        "circuit_short_name":  "Spa-Francorchamps",
+        "location":  "Spa-Francorchamps",
+        "date_start":  "2024-07-28T13:00:00+00:00",
+        "date_end":  "2024-07-28T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9582,
+        "session_name":  "Race",
+        "country_name":  "Netherlands",
+        "circuit_short_name":  "Zandvoort",
+        "location":  "Zandvoort",
+        "date_start":  "2024-08-25T13:00:00+00:00",
+        "date_end":  "2024-08-25T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9590,
+        "session_name":  "Race",
+        "country_name":  "Italy",
+        "circuit_short_name":  "Monza",
+        "location":  "Monza",
+        "date_start":  "2024-09-01T13:00:00+00:00",
+        "date_end":  "2024-09-01T15:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9598,
+        "session_name":  "Race",
+        "country_name":  "Azerbaijan",
+        "circuit_short_name":  "Baku",
+        "location":  "Baku",
+        "date_start":  "2024-09-15T11:00:00+00:00",
+        "date_end":  "2024-09-15T13:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9606,
+        "session_name":  "Race",
+        "country_name":  "Singapore",
+        "circuit_short_name":  "Singapore",
+        "location":  "Marina Bay",
+        "date_start":  "2024-09-22T12:00:00+00:00",
+        "date_end":  "2024-09-22T14:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9617,
+        "session_name":  "Race",
+        "country_name":  "United States",
+        "circuit_short_name":  "Austin",
+        "location":  "Austin",
+        "date_start":  "2024-10-20T19:00:00+00:00",
+        "date_end":  "2024-10-20T21:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9625,
+        "session_name":  "Race",
+        "country_name":  "Mexico",
+        "circuit_short_name":  "Mexico City",
+        "location":  "Mexico City",
+        "date_start":  "2024-10-27T20:00:00+00:00",
+        "date_end":  "2024-10-27T22:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9636,
+        "session_name":  "Race",
+        "country_name":  "Brazil",
+        "circuit_short_name":  "Interlagos",
+        "location":  "S??o Paulo",
+        "date_start":  "2024-11-03T15:30:00+00:00",
+        "date_end":  "2024-11-03T17:30:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9644,
+        "session_name":  "Race",
+        "country_name":  "United States",
+        "circuit_short_name":  "Las Vegas",
+        "location":  "Las Vegas",
+        "date_start":  "2024-11-24T06:00:00+00:00",
+        "date_end":  "2024-11-24T08:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9655,
+        "session_name":  "Race",
+        "country_name":  "Qatar",
+        "circuit_short_name":  "Lusail",
+        "location":  "Lusail",
+        "date_start":  "2024-12-01T16:00:00+00:00",
+        "date_end":  "2024-12-01T18:00:00+00:00"
+    },
+    {
+        "year":  2024,
+        "session_key":  9662,
+        "session_name":  "Race",
+        "country_name":  "United Arab Emirates",
+        "circuit_short_name":  "Yas Marina Circuit",
+        "location":  "Yas Island",
+        "date_start":  "2024-12-08T13:00:00+00:00",
+        "date_end":  "2024-12-08T15:00:00+00:00"
+    }
+]

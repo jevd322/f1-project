@@ -1,0 +1,23 @@
+[
+  {"position": 1, "driver_number": 4, "driver_name": "Lando NORRIS", "team": "McLaren", "points": 423},
+  {"position": 2, "driver_number": 1, "driver_name": "Max VERSTAPPEN", "team": "Red Bull Racing", "points": 421},
+  {"position": 3, "driver_number": 81, "driver_name": "Oscar PIASTRI", "team": "McLaren", "points": 410},
+  {"position": 4, "driver_number": 63, "driver_name": "George RUSSELL", "team": "Mercedes", "points": 319},
+  {"position": 5, "driver_number": 16, "driver_name": "Charles LECLERC", "team": "Ferrari", "points": 242},
+  {"position": 6, "driver_number": 44, "driver_name": "Lewis HAMILTON", "team": "Ferrari", "points": 156},
+  {"position": 7, "driver_number": 12, "driver_name": "Andrea Kimi ANTONELLI", "team": "Mercedes", "points": 150},
+  {"position": 8, "driver_number": 23, "driver_name": "Alexander ALBON", "team": "Williams", "points": 73},
+  {"position": 9, "driver_number": 55, "driver_name": "Carlos SAINZ", "team": "Williams", "points": 64},
+  {"position": 10, "driver_number": 14, "driver_name": "Fernando ALONSO", "team": "Aston Martin", "points": 56},
+  {"position": 11, "driver_number": 27, "driver_name": "Nico HULKENBERG", "team": "Kick Sauber", "points": 51},
+  {"position": 12, "driver_number": 61, "driver_name": "Isack HADJAR", "team": "Racing Bulls", "points": 51},
+  {"position": 13, "driver_number": 87, "driver_name": "Oliver BEARMAN", "team": "Haas F1 Team", "points": 41},
+  {"position": 14, "driver_number": 30, "driver_name": "Liam LAWSON", "team": "Racing Bulls", "points": 38},
+  {"position": 15, "driver_number": 31, "driver_name": "Esteban OCON", "team": "Haas F1 Team", "points": 38},
+  {"position": 16, "driver_number": 18, "driver_name": "Lance STROLL", "team": "Aston Martin", "points": 33},
+  {"position": 17, "driver_number": 22, "driver_name": "Yuki TSUNODA", "team": "Red Bull Racing", "points": 33},
+  {"position": 18, "driver_number": 10, "driver_name": "Pierre GASLY", "team": "Alpine", "points": 22},
+  {"position": 19, "driver_number": 50, "driver_name": "Gabriel BORTOLETO", "team": "Kick Sauber", "points": 19},
+  {"position": 20, "driver_number": 43, "driver_name": "Franco COLAPINTO", "team": "Alpine", "points": 0},
+  {"position": 21, "driver_number": 7, "driver_name": "Jack DOOHAN", "team": "Alpine", "points": 0}
+]

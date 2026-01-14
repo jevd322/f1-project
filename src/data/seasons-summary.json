@@ -1,0 +1,29 @@
+[
+  {
+    "year": 2023,
+    "totalRaces": 22,
+    "champion": "Max Verstappen",
+    "championTeam": "Red Bull Racing",
+    "championPoints": 575,
+    "available": true,
+    "description": "Max Verstappen dominated with 19 wins in 22 races"
+  },
+  {
+    "year": 2024,
+    "totalRaces": 24,
+    "champion": "Max Verstappen",
+    "championTeam": "Red Bull Racing",
+    "championPoints": 437,
+    "available": true,
+    "description": "Closest championship battle in years with McLaren resurgence"
+  },
+  {
+    "year": 2025,
+    "totalRaces": 24,
+    "champion": "Lando Norris",
+    "championTeam": "McLaren",
+    "championPoints": 423,
+    "available": true,
+    "description": "Lando Norris claims his first world championship"
+  }
+]

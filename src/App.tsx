@@ -3,6 +3,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Basics from './pages/Basics';
 import About from './pages/About';
+import Championship from './pages/Championship';
+import SeasonsOverview from './pages/seasons/SeasonsOverview';
+import SeasonDetail from './pages/seasons/SeasonDetail';
+import DriverDetail from './pages/DriverDetail';
+import TeamDetail from './pages/TeamDetail';
+import MyProgress from './pages/MyProgress';
+import './test-json';
 
 function HomeContent() {
   return (
@@ -41,15 +48,38 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [route]);
+
   let content = <HomeContent />;
   // treat any route that starts with /basics as the Basics container
   if (route === '/basics' || route.startsWith('/basics/')) content = <Basics />;
   if (route === '/about') content = <About />;
+  if (route === '/championship') content = <Championship />;
+  if (route === '/seasons') content = <SeasonsOverview />;
+  // Dynamic season detail route: /seasons/YYYY
+  if (route.match(/^\/seasons\/\d{4}$/)) {
+    const year = parseInt(route.split('/')[2]);
+    content = <SeasonDetail year={year} />;
+  }
+  // Dynamic driver detail route: /drivers/driver-id
+  if (route.match(/^\/drivers\/[\w-]+$/)) {
+    const driverId = route.split('/')[2];
+    content = <DriverDetail driverId={driverId} />;
+  }
+  // Dynamic team detail route: /teams/team-id
+  if (route.match(/^\/teams\/[\w-]+$/)) {
+    const teamId = route.split('/')[2];
+    content = <TeamDetail teamId={teamId} />;
+  }
+  if (route === '/myprogress') content = <MyProgress />;
 
   return (
     <div>
       <Header />
-      <main className="min-h-screen flex bg-brand-50">{content}</main>
+      <main className="min-h-screen flex justify-center bg-brand-50">{content}</main>
       <Footer />
     </div>
   );
