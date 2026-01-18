@@ -1,154 +1,82 @@
-import SideNav from '../components/sideNav';
+import { Separator } from '@radix-ui/react-separator';
 import SectionNavButtons from '../components/SectionNavButtons';
-import { RaceTimeline as RaceTimeline } from '../components/RaceTimeline';
-import { RaceTimelineSlides as RaceTimelineslides } from '../components/RaceTimeline';
 
 export default function RaceDay() {
   return (
-    <div>
+    <div className=" mx-auto">
       <header className="mb-12">
-        <h2 className="text-m font-black text-gray-400">Race Weekend</h2>
+        <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Race Weekend</h2>
         <h1 className="mt-1 text-5xl uppercase font-black text-transparent bg-gradient-to-r from-[#FFD37B] to-[#FFC857] bg-clip-text">
           Race Day
         </h1>
       </header>
+      
+            <h2 className="text-2xl font-bold text-gray-100 mb-4">Race Day Breakdown</h2>
+        <p className="text-gray-300 text-md mb-4">
+          Here's what happens from morning to podium.
+        </p>
 
-      <section className="my-6">
-        <h2 className="text-3xl text-gray-100 font-bold">Sunday Timeline</h2>
-        <div>
-          <p className="text-gray-400">
-            This page is dedicated to providing the full timeline of the main event, the Grand Prix;
-            the race.
-          </p>
-        </div>
-      </section>
+      <section className="mb-12 bg-slate-800/50 p-8 rounded-lg border border-white/10">
 
-      <section className="my-6">
-        <div className="flex flex-col gap-0 pb-4 relative">
-          {/* Pre-Race */}
-          <div className="flex flex-row items-start gap-4 relative">
-            <div className="w-full">
-              <div className="flex flex-col">
-                <div className="flex flex-row gap-2 items-center">
-                  <div className="w-4 h-4 rounded-full bg-yellow-200 border-2 border-amber-500" />
-                  <p className="text-xl font-bold uppercase text-yellow-200">Pre-Race</p>
-                </div>
-                <p className="text-sm text-gray-400">
-                  Grid formation, warm-up laps, strategy finalization, media build-up.
-                </p>
-              </div>
-
-              <div className="shadow-lg border-l-4 border-blue-900 mt-4 p-4 rounded-lg bg-gray-900">
-                <h2 className="text-lg font-bold text-gray-100">Installation Laps</h2>
-                <p className="flex flex-row gap-1 items-center text-sm text-gray-400 mb-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="text-gray-500"
-                  >
-                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
-                    <path
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 6v6l4 2"
-                    />
-                  </svg>
-                  30 minutes before race start
-                </p>
-                <p className="text-sm text-gray-200">
-                  Installation laps are only done from pitlane exit to pitlane entry, meaning you
-                  cannot do a full lap. After completing the laps, the drivers head to the starting
-                  grid where mechanics take over.
-                  <br />
-                  <ul className="list-disc list-inside mt-2">
-                    Purpose:
-                    <li>Check brakes and tire temperatures</li>
-                    <li>Practice pit entry and exit</li>
-                    <li>Get a feel for the car's balance</li>
-                  </ul>
-                </p>
-              </div>
-              <div className="shadow-lg border-l-4 border-blue-900 mt-4 p-4 rounded-lg bg-gray-900">
-                <h2 className="text-lg font-bold text-gray-100">Grid Preparation</h2>
-                <p className="flex flex-row gap-1 items-center text-sm text-gray-400 mb-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="text-gray-500"
-                  >
-                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
-                    <path
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 6v6l4 2"
-                    />
-                  </svg>
-                  30 minutes before race start
-                </p>
-                <p className="text-sm text-gray-200">
-                  Installation laps are only done from pitlane exit to pitlane entry, meaning you
-                  cannot do a full lap. After completing the laps, the drivers head to the starting
-                  grid where mechanics take over.
-                  <br />
-                  <ul className="list-disc list-inside mt-2">
-                    Purpose:
-                    <li>Check brakes and tire temperatures</li>
-                    <li>Practice pit entry and exit</li>
-                    <li>Get a feel for the car's balance</li>
-                  </ul>
-                </p>
-              </div>
-
-              <div className="shadow-lg border-l-4 border-blue-900 mt-4 p-4 rounded-lg bg-gray-900">
-                <h2 className="text-lg font-bold text-gray-100">Installation Laps</h2>
-                <p className="flex flex-row gap-1 items-center text-sm text-gray-400 mb-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="text-gray-500"
-                  >
-                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
-                    <path
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 6v6l4 2"
-                    />
-                  </svg>
-                  30 minutes before race start
-                </p>
-                <p className="text-sm text-gray-200">
-                  Installation laps are only done from pitlane exit to pitlane entry, meaning you
-                  cannot do a full lap.
-                  <br />
-                  <ul className="list-disc list-inside mt-2">
-                    Purpose:
-                    <li>Check brakes and tire temperatures</li>
-                    <li>Practice pit entry and exit</li>
-                    <li>Get a feel for the car's balance</li>
-                  </ul>
-                </p>
-              </div>
+        {/* Pre-Race */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-yellow-400" />
+            <h3 className="text-xl font-bold text-yellow-400">Pre-Race</h3>
+          </div>
+          <div className="space-y-4 ml-5 border-l-2 border-yellow-400/30 pl-6">
+            <div>
+              <h4 className="font-semibold text-gray-100">Installation Laps (40 min before)</h4>
+              <p className="text-sm text-gray-400">Drivers check their car systems from pit exit to pit entry.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-100">Grid Formation (30 min before)</h4>
+              <p className="text-sm text-gray-400">Cars line up in qualifying order, mechanics make final adjustments.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-100">Formation Lap</h4>
+              <p className="text-sm text-gray-400">One lap to warm tires and brakes before returning to grid.</p>
             </div>
           </div>
         </div>
 
-        <h2 className="text-xl text-gray-300 font-semibold mt-4">Race Start</h2>
-        <h2 className="text-xl text-gray-300 font-semibold mt-4">Post-Race</h2>
+        <Separator className="my-6 h-px bg-gray-700 border-0" />
+
+        {/* During Race */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+            <h3 className="text-xl font-bold text-green-500">Race</h3>
+          </div>
+          <div className="space-y-4 ml-5 border-l-2 border-green-500/30 pl-6">
+            <div>
+              <h4 className="font-semibold text-gray-100">Lights Out!</h4>
+              <p className="text-sm text-gray-400">The most chaotic lap with position battles and potential incidents.</p>
+            </div>          
+            <div>
+              <h4 className="font-semibold text-gray-100">Race Distance</h4>
+              <p className="text-sm text-gray-400">305 km(190 miles) or 2 hours</p>
+            </div>
+          </div>
+        </div>
+        <Separator className="my-6 h-px bg-gray-700 border-0" />
+        {/* Post-Race */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-purple-500" />
+            <h3 className="text-xl font-bold text-purple-500">Finish</h3>
+          </div>
+          <div className="space-y-4 ml-5 border-l-2 border-purple-500/30 pl-6">
+            <div>
+              <h4 className="font-semibold text-gray-100">Cool Down Lap</h4>
+              <p className="text-sm text-gray-400">Victory celebrations and return to parc fermé.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-100">Podium</h4>
+              <p className="text-sm text-gray-400">Top three celebrate with trophies and champagne.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <SectionNavButtons />

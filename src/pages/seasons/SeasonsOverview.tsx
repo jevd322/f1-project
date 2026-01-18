@@ -138,7 +138,7 @@ export default function Seasons() {
     <div className="max-w-6xl mx-12 my-12">
       <header className="mb-12">
         <h2 className="text-m font-black text-gray-400">F1 History</h2>
-        <h1 className="mt-1 text-4xl uppercase font-black text-transparent bg-gradient-to-r from-[#FFD37B] to-[#FFC857] bg-clip-text">
+        <h1 className="mt-1 text-5xl uppercase font-black text-transparent bg-gradient-to-r from-[#FFD37B] to-[#FFC857] bg-clip-text">
           All Seasons
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-3xl">

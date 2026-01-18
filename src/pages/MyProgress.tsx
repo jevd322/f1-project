@@ -150,9 +150,42 @@ export default function MyProgress() {
       return [];
     }
 
+    // Calculate previous race positions for comparison
+    const calculatePositionsAtRace = (raceIndex: number) => {
+      const driversData = yearStandings.map(standing => {
+        let points = 0;
+        races.forEach((race: any, index: number) => {
+          if (index <= raceIndex) {
+            const result = (f1dbRaceResults as any[]).find(
+              (r: any) => r.raceId === race.id && r.driverId === standing.driverId
+            );
+            const sprintResult = (f1dbSprintResults as any[]).find(
+              (r: any) => r.raceId === race.id && r.driverId === standing.driverId
+            );
+            if (result) {
+              points += (result.points || 0) + (sprintResult?.points || 0);
+            }
+          }
+        });
+        return { driverId: standing.driverId, points, finalPosition: standing.positionDisplayOrder };
+      });
+      
+      return driversData
+        .sort((a, b) => {
+          if (b.points !== a.points) return b.points - a.points;
+          return a.finalPosition - b.finalPosition;
+        })
+        .reduce((acc, driver, idx) => {
+          acc[driver.driverId] = idx + 1;
+          return acc;
+        }, {} as Record<string, number>);
+    };
+
+    const previousPositions = selectedRaceIndex > 0 ? calculatePositionsAtRace(selectedRaceIndex - 1) : {};
+
     // Load actual race results for each driver for ALL races
-    return yearStandings.map(standing => {
-      const raceResults: Array<{ position: number | string | null; points: number | null }> = [];
+    const driversWithResults = yearStandings.map(standing => {
+      const raceResults: Array<{ position: number | string | null; points: number | null; racePoints: number | null; sprintPoints: number | null }> = [];
       let currentPoints = 0;
 
       // Loop through ALL races, not just up to selected
@@ -177,14 +210,14 @@ export default function MyProgress() {
             const totalPoints = racePoints + sprintPoints;
             currentPoints += totalPoints;
 
-            raceResults.push({ position, points: totalPoints });
+            raceResults.push({ position, points: totalPoints, racePoints, sprintPoints });
           } else {
             // Driver didn't participate in this race
-            raceResults.push({ position: 'DNS', points: 0 });
+            raceResults.push({ position: 'DNS', points: 0, racePoints: 0, sprintPoints: 0 });
           }
         } else {
           // Race hasn't been reached yet - show empty
-          raceResults.push({ position: null, points: null });
+          raceResults.push({ position: null, points: null, racePoints: null, sprintPoints: null });
         }
       });
 
@@ -205,12 +238,22 @@ export default function MyProgress() {
       // Tiebreaker: use final position
       return a.finalPosition - b.finalPosition;
     })
-    // Assign current positions
-    .map((driver, index) => ({
-      ...driver,
-      position: index + 1,
-      positionText: String(index + 1)
-    }));
+    // Assign current positions and calculate position change
+    .map((driver, index) => {
+      const currentPosition = index + 1;
+      const previousPosition = previousPositions[driver.driverId];
+      const positionChange = previousPosition ? previousPosition - currentPosition : 0;
+      
+      return {
+        ...driver,
+        position: currentPosition,
+        positionText: String(currentPosition),
+        positionChange,
+        previousPosition
+      };
+    });
+
+    return driversWithResults;
   }, [selectedYear, selectedRaceIndex, races]);
 
   // Calculate constructor standings using actual constructor data from race results
@@ -282,7 +325,7 @@ export default function MyProgress() {
 
       {/* Season Selector */}
       <div className="mb-6">
-        <h3 className="text-xl font-bold mb-2 text-foreground">Select Season</h3>
+        <h3 className="text-xl font-bold mb-2 text-foreground">Select Year</h3>
         <div className="">
           <div>
           {/* Dropdown for all seasons */}
@@ -428,7 +471,15 @@ export default function MyProgress() {
                       const isSelected = idx === selectedRaceIndex;
                       return (
                         <th key={race.id} className={`py-3 px-2 text-gray-400 font-semibold text-center w-[100px] min-w-[100px] max-w-[100px] ${isSelected ? 'bg-zinc-700/70' : ''}`}>
-                          <div className="text-xs break-words leading-tight">
+                          <div 
+                            onClick={() => setSelectedRaceIndex(idx)}
+                            className={`text-xs break-words leading-tight cursor-pointer transition-all duration-300 ${
+                              idx <= selectedRaceIndex
+                                ? 'opacity-100'
+                                : 'opacity-40 hover:opacity-70'
+                            }`}
+                            title={`Round ${race.round}: ${race.officialName}`}
+                          >
                             {Flag && (
                               <div className="mb-1 flex justify-center">
                                 <Flag className="w-8 h-4" />
@@ -448,22 +499,37 @@ export default function MyProgress() {
                   {standings.length > 0 ? standings.map((driver) => (
                     <tr 
                       key={driver.driverId} 
-                      className="border-b border-gray-800 transition-colors"
+                      className="border-b border-gray-800 hover:bg-gray-800/50 transition-colors"
                     >
                       <td className="py-3 px-3 font-bold text-orange-200/90 sticky left-0 bg-gray-900">
                         {driver.positionText}
                       </td>
                       <td className="py-3 px-3 sticky left-12 bg-gray-900">
-                        <div className="font-semibold text-xs">{driver.driverName}</div>
+                        <div className="flex items-center gap-2">
+                          <div className="font-semibold text-xs">{driver.driverName}</div>
+                          {driver.positionChange !== 0 && selectedRaceIndex > 0 && (
+                            <div className={`text-xs font-bold flex items-center ${
+                              driver.positionChange > 0 
+                                ? 'text-green-400' 
+                                : 'text-red-400'
+                            }`}>
+                              {driver.positionChange > 0 ? '↑' : '↓'}
+                              <span className="ml-0.5">{Math.abs(driver.positionChange)}</span>
+                            </div>
+                          )}
+                        </div>
                       </td>
                       {driver.raceResults.map((result, idx) => (
                         <td key={idx} className={`py-3 px-2 text-center w-[100px] min-w-[100px] max-w-[100px] ${idx === selectedRaceIndex ? 'bg-gray-700/50' : ''}`}>
-                          <div className="flex flex-col gap-2 justify-center items-center">
+                          <div className="flex flex-col gap-1 justify-center items-center">
                             {result.position !== null ? (
                               <>
                                 <div className="text-md font-bold text-gray-200">{result.position}</div>
-                                {result.points !== null && result.points > 0 && (
-                                  <div className="text-xs text-[#FFD37B]">{result.points}</div>
+                                {result.racePoints !== null && result.racePoints > 0 && (
+                                  <div className="text-xs text-[#FFD37B]" title="Race points">{result.racePoints}</div>
+                                )}
+                                {result.sprintPoints !== null && result.sprintPoints > 0 && (
+                                  <div className="text-xs text-[#8BC6EC]" title="Sprint points">+{result.sprintPoints}</div>
                                 )}
                               </>
                             ) : (

@@ -32,8 +32,8 @@ export default function Header() {
             <a href="#/seasons" className={linkClass('/seasons')}>
               Seasons
             </a>
-            <a href="#/myprogress" className={linkClass('/myprogress')}>
-              My Progress
+            <a href="#/tracker" className={linkClass('/tracker')}>
+              Tracker
             </a>
           </nav>
         </div>
