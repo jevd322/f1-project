@@ -18,9 +18,8 @@ export default function QualifyingPage() {
 
       {/* Three-Phase Format */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-100 mb-6">Three-Phase Knockout Format</h2>
-        
         <div className="bg-white/5 rounded-lg p-6 border border-white/10 mb-6">
+                <h2 className="text-2xl font-bold text-gray-100 mb-6">Three-Phase Knockout Format</h2>
           <p className="text-gray-300 mb-6">
             Qualifying uses an elimination format with three sessions (Q1, Q2, Q3), progressively reducing the field until the top 10 battle for pole position.
           </p>

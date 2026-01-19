@@ -113,6 +113,16 @@ export default function Home() {
           </a>
         </div>
 
+        <div className="bg-white/5 rounded-lg p-6 border border-white/10">
+          <h3 className="text-xl font-bold text-gray-100 mb-3">Grand Prix Details</h3>
+          <p className="text-gray-300 mb-4">
+            View full race results, qualifying, and race statistics.
+          </p>
+          <a href="#/grandprix-detail" className="text-red-500 hover:text-red-400 font-semibold">
+            View Details →
+          </a>
+        </div>
+
       </section>
 
       {/* Countdown Timer */}

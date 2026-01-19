@@ -10,6 +10,7 @@ import DriverDetail from './pages/DriverDetail';
 import TeamDetail from './pages/TeamDetail';
 import MyProgress from './pages/MyProgress';
 import Home from './pages/Home';
+import GrandPrixDetail from './pages/GrandPrixDetail';
 import './test-json';
 
 export default function App() {
@@ -48,6 +49,7 @@ export default function App() {
     content = <TeamDetail teamId={teamId} />;
   }
   if (route === '/tracker') content = <MyProgress />;
+  if (route === '/grandprix-detail') content = <GrandPrixDetail />;
 
   return (
     <div>

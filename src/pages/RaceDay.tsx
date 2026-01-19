@@ -16,7 +16,7 @@ export default function RaceDay() {
           Here's what happens from morning to podium.
         </p>
 
-      <section className="mb-12 bg-slate-800/50 p-8 rounded-lg border border-white/10">
+      <section className="mb-12 bg-white/5 p-8 rounded-lg border border-white/10">
 
         {/* Pre-Race */}
         <div className="mb-8">
