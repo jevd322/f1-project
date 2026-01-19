@@ -9,35 +9,8 @@ import SeasonDetail from './pages/seasons/SeasonDetail';
 import DriverDetail from './pages/DriverDetail';
 import TeamDetail from './pages/TeamDetail';
 import MyProgress from './pages/MyProgress';
+import Home from './pages/Home';
 import './test-json';
-
-function HomeContent() {
-  return (
-    <div className="flex flex-col w-full max-w-6xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-extrabold text-gray-100">CHAOS IN RACES - MADE SIMPLE</h1>
-      <p className="mt-4 text-gray-200">This is a simple home page with a header and footer.</p>
-
-      <div className="mt-8 space-y-6">
-        <section className="bg-white/80 p-6 rounded shadow">
-          <h2 className="text-xl font-semibold text-gray-800">Getting started</h2>
-          <p className="mt-2 text-gray-600">
-            Run <code className="bg-gray-100 px-2 py-1 rounded text-sm">npm install</code> then{' '}
-            <code className="bg-gray-100 px-2 py-1 rounded text-sm">npm run dev</code>.
-          </p>
-        </section>
-
-        <section className="bg-white/80 p-6 rounded shadow">
-          <h3 className="text-lg font-medium">Features</h3>
-          <ul className="list-disc list-inside text-gray-600 mt-2">
-            <li>Vite + React + TypeScript</li>
-            <li>Tailwind CSS</li>
-            <li>ESLint + Prettier</li>
-          </ul>
-        </section>
-      </div>
-    </div>
-  );
-}
 
 export default function App() {
   const [route, setRoute] = useState(() => window.location.hash.replace('#', '') || '/');
@@ -53,7 +26,7 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [route]);
 
-  let content = <HomeContent />;
+  let content = <Home />;
   // treat any route that starts with /basics as the Basics container
   if (route === '/basics' || route.startsWith('/basics/')) content = <Basics />;
   if (route === '/about') content = <About />;
@@ -74,7 +47,7 @@ export default function App() {
     const teamId = route.split('/')[2];
     content = <TeamDetail teamId={teamId} />;
   }
-  if (route === '/myprogress') content = <MyProgress />;
+  if (route === '/tracker') content = <MyProgress />;
 
   return (
     <div>
