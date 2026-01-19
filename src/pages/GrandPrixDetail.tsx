@@ -1,34 +1,124 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SectionNavButtons from '../components/SectionNavButtons';
+import racesData from '../data/f1db-races.json';
+import raceResultsData from '../data/f1db-archive/f1db-races-race-results.json';
+import qualifyingResultsData from '../data/f1db-archive/f1db-races-qualifying-results.json';
+import sprintResultsData from '../data/f1db-archive/f1db-races-sprint-race-results.json';
 
-export default function GrandPrixDetail() {
+interface GrandPrixDetailProps {
+  year?: number;
+  round?: number;
+}
+
+interface Race {
+  id: number;
+  year: number;
+  round: number;
+  date: string;
+  grandPrixId: string;
+  officialName: string;
+  circuitId: string;
+  courseLength: number;
+  laps: number;
+  distance: number;
+}
+
+interface RaceResult {
+  raceId: number;
+  year: number;
+  round: number;
+  positionNumber: number | null;
+  positionText: string;
+  driverNumber: string;
+  driverId: string;
+  constructorId: string;
+  time: string | null;
+  timeMillis: number | null;
+  points: number;
+  laps: number | null;
+}
+
+interface QualifyingResult {
+  raceId: number;
+  year: number;
+  round: number;
+  positionNumber: number | null;
+  positionText: string;
+  driverNumber: string;
+  driverId: string;
+  constructorId: string;
+  q1: string | null;
+  q2: string | null;
+  q3: string | null;
+}
+
+export default function GrandPrixDetail({ year = 2024, round = 8 }: GrandPrixDetailProps) {
   const [activeTab, setActiveTab] = useState<'race' | 'qualifying' | 'sprint'>('race');
+  const [grandPrix, setGrandPrix] = useState<any>(null);
+  const [raceResults, setRaceResults] = useState<RaceResult[]>([]);
+  const [qualifyingResults, setQualifyingResults] = useState<QualifyingResult[]>([]);
+  const [sprintResults, setSprintResults] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // TODO: Replace with actual data from props or API
-  const grandPrix = {
-    name: "Monaco Grand Prix",
-    round: 8,
-    season: 2025,
-    circuit: {
-      name: "Circuit de Monaco",
-      location: "Monte Carlo, Monaco",
-      length: "3.337 km",
-      laps: 78,
-      raceDistance: "260.286 km"
-    },
-    date: {
-      weekend: "May 23-25, 2025",
-      race: "May 25, 2025"
-    },
-    weather: {
-      race: "Sunny, 24°C",
-      track: "Dry"
+  useEffect(() => {
+    // Find the race in the data
+    const race = (racesData as Race[]).find(r => r.year === year && r.round === round);
+    
+    if (race) {
+      // Format the race data
+      const formattedGrandPrix = {
+        name: race.officialName,
+        round: race.round,
+        season: race.year,
+        circuit: {
+          name: race.circuitId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+          location: race.circuitId,
+          length: `${race.courseLength} km`,
+          laps: race.laps,
+          raceDistance: `${race.distance.toFixed(3)} km`
+        },
+        date: {
+          weekend: race.date,
+          race: race.date
+        },
+        weather: {
+          race: "N/A",
+          track: "N/A"
+        }
+      };
+      setGrandPrix(formattedGrandPrix);
+
+      // Load race results
+      const results = (raceResultsData as RaceResult[])
+        .filter((r: any) => r.raceId === race.id)
+        .sort((a, b) => (a.positionNumber || 999) - (b.positionNumber || 999));
+      setRaceResults(results);
+
+      // Load qualifying results
+      const qualResults = (qualifyingResultsData as QualifyingResult[])
+        .filter((q: any) => q.raceId === race.id)
+        .sort((a, b) => (a.positionNumber || 999) - (b.positionNumber || 999));
+      setQualifyingResults(qualResults);
+
+      // Load sprint results if available
+      const sprintRes = (sprintResultsData as any[])
+        .filter((s: any) => s.raceId === race.id)
+        .sort((a, b) => (a.positionNumber || 999) - (b.positionNumber || 999));
+      setSprintResults(sprintRes);
     }
-  };
+    
+    setLoading(false);
+  }, [year, round]);
 
   return (
     <div>
-      {/* Header */}
+      {loading || !grandPrix ? (
+        <div className="text-center py-16">
+          <p className="text-gray-400 text-lg">Loading Grand Prix details...</p>
+        </div>
+      ) : (
+        <>
+          {/* Header */}
       <header className="mb-12">
         <div className="flex items-center gap-3 mb-2">
           <span className="text-sm font-black text-gray-400 uppercase tracking-wider">
@@ -137,12 +227,16 @@ export default function GrandPrixDetail() {
                 <div className="text-4xl font-black text-yellow-400">🏆</div>
                 <div>
                   <p className="text-sm text-gray-400">Race Winner</p>
-                  <p className="text-3xl font-black text-white">Driver Name</p>
-                  <p className="text-lg text-gray-300">Team Name</p>
+                  <p className="text-3xl font-black text-white">
+                    {raceResults[0] ? raceResults[0].driverId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'N/A'}
+                  </p>
+                  <p className="text-lg text-gray-300">
+                    {raceResults[0] ? raceResults[0].constructorId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'N/A'}
+                  </p>
                 </div>
                 <div className="ml-auto text-right">
                   <p className="text-sm text-gray-400">Race Time</p>
-                  <p className="text-xl font-bold text-white">1:23:45.678</p>
+                  <p className="text-xl font-bold text-white">{raceResults[0]?.time || 'N/A'}</p>
                 </div>
               </div>
             </div>
@@ -161,32 +255,22 @@ export default function GrandPrixDetail() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* TODO: Map over actual race results data */}
-                  <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="py-3 px-4 font-bold text-white">1</td>
-                    <td className="py-3 px-4 text-white">Driver Name</td>
-                    <td className="py-3 px-4 text-gray-300">Team Name</td>
-                    <td className="py-3 px-4 text-gray-300">78</td>
-                    <td className="py-3 px-4 text-gray-300">1:23:45.678</td>
-                    <td className="py-3 px-4 font-bold text-green-400">25</td>
-                  </tr>
-                  <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="py-3 px-4 font-bold text-white">2</td>
-                    <td className="py-3 px-4 text-white">Driver Name</td>
-                    <td className="py-3 px-4 text-gray-300">Team Name</td>
-                    <td className="py-3 px-4 text-gray-300">78</td>
-                    <td className="py-3 px-4 text-gray-300">+5.234</td>
-                    <td className="py-3 px-4 font-bold text-green-400">18</td>
-                  </tr>
-                  <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="py-3 px-4 font-bold text-white">3</td>
-                    <td className="py-3 px-4 text-white">Driver Name</td>
-                    <td className="py-3 px-4 text-gray-300">Team Name</td>
-                    <td className="py-3 px-4 text-gray-300">78</td>
-                    <td className="py-3 px-4 text-gray-300">+12.567</td>
-                    <td className="py-3 px-4 font-bold text-green-400">15</td>
-                  </tr>
-                  {/* Add more rows as needed */}
+                  {raceResults.length > 0 ? raceResults.slice(0, 10).map((result) => (
+                    <tr key={result.driverNumber} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-4 font-bold text-white">{result.positionText}</td>
+                      <td className="py-3 px-4 text-white">{result.driverId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                      <td className="py-3 px-4 text-gray-300">{result.constructorId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                      <td className="py-3 px-4 text-gray-300">{result.laps || 'N/A'}</td>
+                      <td className="py-3 px-4 text-gray-300">{result.time || 'N/A'}</td>
+                      <td className="py-3 px-4 font-bold text-green-400">{result.points}</td>
+                    </tr>
+                  )) : (
+                    <tr>
+                      <td colSpan={6} className="py-8 text-center text-gray-400">
+                        No race results available
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -206,12 +290,16 @@ export default function GrandPrixDetail() {
                 <div className="text-4xl font-black text-purple-400">🥇</div>
                 <div>
                   <p className="text-sm text-gray-400">Pole Position</p>
-                  <p className="text-3xl font-black text-white">Driver Name</p>
-                  <p className="text-lg text-gray-300">Team Name</p>
+                  <p className="text-3xl font-black text-white">
+                    {qualifyingResults[0] ? qualifyingResults[0].driverId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'N/A'}
+                  </p>
+                  <p className="text-lg text-gray-300">
+                    {qualifyingResults[0] ? qualifyingResults[0].constructorId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'N/A'}
+                  </p>
                 </div>
                 <div className="ml-auto text-right">
                   <p className="text-sm text-gray-400">Lap Time</p>
-                  <p className="text-xl font-bold text-white">1:23.456</p>
+                  <p className="text-xl font-bold text-white">{qualifyingResults[0]?.q3 || qualifyingResults[0]?.q2 || qualifyingResults[0]?.q1 || 'N/A'}</p>
                 </div>
               </div>
             </div>
@@ -230,16 +318,22 @@ export default function GrandPrixDetail() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* TODO: Map over actual qualifying results data */}
-                  <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="py-3 px-4 font-bold text-white">1</td>
-                    <td className="py-3 px-4 text-white">Driver Name</td>
-                    <td className="py-3 px-4 text-gray-300">Team Name</td>
-                    <td className="py-3 px-4 text-gray-300">1:24.123</td>
-                    <td className="py-3 px-4 text-gray-300">1:23.789</td>
-                    <td className="py-3 px-4 font-bold text-purple-400">1:23.456</td>
-                  </tr>
-                  {/* Add more rows as needed */}
+                  {qualifyingResults.length > 0 ? qualifyingResults.slice(0, 10).map((result) => (
+                    <tr key={result.driverNumber} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                      <td className="py-3 px-4 font-bold text-white">{result.positionText}</td>
+                      <td className="py-3 px-4 text-white">{result.driverId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                      <td className="py-3 px-4 text-gray-300">{result.constructorId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                      <td className="py-3 px-4 text-gray-300">{result.q1 || '-'}</td>
+                      <td className="py-3 px-4 text-gray-300">{result.q2 || '-'}</td>
+                      <td className="py-3 px-4 font-bold text-purple-400">{result.q3 || '-'}</td>
+                    </tr>
+                  )) : (
+                    <tr>
+                      <td colSpan={6} className="py-8 text-center text-gray-400">
+                        No qualifying results available
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -254,44 +348,47 @@ export default function GrandPrixDetail() {
             <h2 className="text-2xl font-bold text-gray-100 mb-6">Sprint Results</h2>
             
             {/* Check if sprint weekend */}
-            <div className="bg-blue-500/10 border-l-4 border-blue-500 rounded-lg p-5 mb-6">
-              <p className="text-gray-300">
-                <span className="font-bold text-blue-400">Sprint Weekend:</span> This Grand Prix featured a sprint race on Saturday.
-              </p>
-            </div>
+            {sprintResults.length > 0 ? (
+              <>
+                <div className="bg-blue-500/10 border-l-4 border-blue-500 rounded-lg p-5 mb-6">
+                  <p className="text-gray-300">
+                    <span className="font-bold text-blue-400">Sprint Weekend:</span> This Grand Prix featured a sprint race on Saturday.
+                  </p>
+                </div>
 
-            {/* Sprint Table */}
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left py-3 px-4 text-gray-400 font-semibold">Pos</th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-semibold">Driver</th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-semibold">Team</th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-semibold">Laps</th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-semibold">Time</th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-semibold">Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* TODO: Map over actual sprint results data */}
-                  <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="py-3 px-4 font-bold text-white">1</td>
-                    <td className="py-3 px-4 text-white">Driver Name</td>
-                    <td className="py-3 px-4 text-gray-300">Team Name</td>
-                    <td className="py-3 px-4 text-gray-300">30</td>
-                    <td className="py-3 px-4 text-gray-300">45:12.345</td>
-                    <td className="py-3 px-4 font-bold text-green-400">8</td>
-                  </tr>
-                  {/* Add more rows as needed */}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Note: Or display message if no sprint */}
-            {/* <div className="text-center py-8">
-              <p className="text-gray-400">This was not a sprint weekend.</p>
-            </div> */}
+                {/* Sprint Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-white/10">
+                        <th className="text-left py-3 px-4 text-gray-400 font-semibold">Pos</th>
+                        <th className="text-left py-3 px-4 text-gray-400 font-semibold">Driver</th>
+                        <th className="text-left py-3 px-4 text-gray-400 font-semibold">Team</th>
+                        <th className="text-left py-3 px-4 text-gray-400 font-semibold">Laps</th>
+                        <th className="text-left py-3 px-4 text-gray-400 font-semibold">Time</th>
+                        <th className="text-left py-3 px-4 text-gray-400 font-semibold">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sprintResults.slice(0, 10).map((result: any) => (
+                        <tr key={result.driverNumber} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                          <td className="py-3 px-4 font-bold text-white">{result.positionText}</td>
+                          <td className="py-3 px-4 text-white">{result.driverId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                          <td className="py-3 px-4 text-gray-300">{result.constructorId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
+                          <td className="py-3 px-4 text-gray-300">{result.laps || 'N/A'}</td>
+                          <td className="py-3 px-4 text-gray-300">{result.time || 'N/A'}</td>
+                          <td className="py-3 px-4 font-bold text-green-400">{result.points}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-gray-400">This was not a sprint weekend.</p>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -407,6 +504,8 @@ export default function GrandPrixDetail() {
       </section>
 
       <SectionNavButtons />
+        </>
+      )}
     </div>
   );
 }

@@ -50,6 +50,13 @@ export default function App() {
   }
   if (route === '/tracker') content = <MyProgress />;
   if (route === '/grandprix-detail') content = <GrandPrixDetail />;
+  // Dynamic Grand Prix detail route: /grandprix/YYYY/RR
+  if (route.match(/^\/grandprix\/\d{4}\/\d+$/)) {
+    const parts = route.split('/');
+    const year = parseInt(parts[2]);
+    const round = parseInt(parts[3]);
+    content = <GrandPrixDetail year={year} round={round} />;
+  }
 
   return (
     <div>

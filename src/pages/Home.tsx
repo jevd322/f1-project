@@ -118,7 +118,7 @@ export default function Home() {
           <p className="text-gray-300 mb-4">
             View full race results, qualifying, and race statistics.
           </p>
-          <a href="#/grandprix-detail" className="text-red-500 hover:text-red-400 font-semibold">
+          <a href="#/grandprix/2024/8" className="text-red-500 hover:text-red-400 font-semibold">
             View Details →
           </a>
         </div>
