@@ -52,12 +52,48 @@ interface QualifyingResult {
   q3: string | null;
 }
 
+interface SprintResult {
+  raceId: number;
+  year: number;
+  round: number;
+  positionNumber: number | null;
+  positionText: string;
+  driverNumber: string;
+  driverId: string;
+  constructorId: string;
+  time: string | null;
+  timeMillis: number | null;
+  points: number;
+  laps: number | null;
+}
+
+interface GrandPrixData {
+  name: string;
+  round: number;
+  season: number;
+  circuit: {
+    name: string;
+    location: string;
+    length: string;
+    laps: number;
+    raceDistance: string;
+  };
+  date: {
+    weekend: string;
+    race: string;
+  };
+  weather: {
+    race: string;
+    track: string;
+  };
+}
+
 export default function GrandPrixDetail({ year = 2024, round = 8 }: GrandPrixDetailProps) {
   const [activeTab, setActiveTab] = useState<'race' | 'qualifying' | 'sprint'>('race');
-  const [grandPrix, setGrandPrix] = useState<any>(null);
+  const [grandPrix, setGrandPrix] = useState<GrandPrixData | null>(null);
   const [raceResults, setRaceResults] = useState<RaceResult[]>([]);
   const [qualifyingResults, setQualifyingResults] = useState<QualifyingResult[]>([]);
-  const [sprintResults, setSprintResults] = useState<any[]>([]);
+  const [sprintResults, setSprintResults] = useState<SprintResult[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -90,19 +126,19 @@ export default function GrandPrixDetail({ year = 2024, round = 8 }: GrandPrixDet
 
       // Load race results
       const results = (raceResultsData as RaceResult[])
-        .filter((r: any) => r.raceId === race.id)
+        .filter((r) => r.raceId === race.id)
         .sort((a, b) => (a.positionNumber || 999) - (b.positionNumber || 999));
       setRaceResults(results);
 
       // Load qualifying results
       const qualResults = (qualifyingResultsData as QualifyingResult[])
-        .filter((q: any) => q.raceId === race.id)
+        .filter((q) => q.raceId === race.id)
         .sort((a, b) => (a.positionNumber || 999) - (b.positionNumber || 999));
       setQualifyingResults(qualResults);
 
       // Load sprint results if available
-      const sprintRes = (sprintResultsData as any[])
-        .filter((s: any) => s.raceId === race.id)
+      const sprintRes = (sprintResultsData as SprintResult[])
+        .filter((s) => s.raceId === race.id)
         .sort((a, b) => (a.positionNumber || 999) - (b.positionNumber || 999));
       setSprintResults(sprintRes);
     }
@@ -370,7 +406,7 @@ export default function GrandPrixDetail({ year = 2024, round = 8 }: GrandPrixDet
                       </tr>
                     </thead>
                     <tbody>
-                      {sprintResults.slice(0, 10).map((result: any) => (
+                      {sprintResults.slice(0, 10).map((result) => (
                         <tr key={result.driverNumber} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                           <td className="py-3 px-4 font-bold text-white">{result.positionText}</td>
                           <td className="py-3 px-4 text-white">{result.driverId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</td>
